@@ -20,10 +20,19 @@ elif credentials.secret_key is not None:
 else:
     raise Exception("AWS_SECRET_ACCESS_KEY is not provided")
 
+if 'AWS_REGION' in os.environ:
+    region = os.environ['AWS_REGION']
+elif session.region_name is not None:
+    region = session.region_name
+else:
+    print(f"WARNING: AWS_REGION is not provided, setting {default_region} as default")
+    region = default_region
+
 
 ec2 = boto3.client('ec2',
                    aws_access_key_id = access_key,
-                   aws_secret_access_key = secret_key)
+                   aws_secret_access_key = secret_key,
+                   region_name = region)
 
 # Use the client to get information about instances
 response = ec2.describe_instances(
