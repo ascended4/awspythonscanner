@@ -5,8 +5,9 @@ pipeline {
             steps {
                 cleanWs()
                 withAWS(credentials: 'svc_aws_k8s_pythonscanner') {
-                    //sh 'sudo docker rm awspythonscanner'
-                    sh "sudo docker run --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --name awspythonscanner awspythonscanner:latest"
+                    // sh 'sudo docker rm awspythonscanner'
+                    // sh "sudo docker run --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --name awspythonscanner awspythonscanner:latest"
+                    sh "sudo docker run --rm --name awspythonscanner awspythonscanner:latest"
                 }
             }
         }
