@@ -14,5 +14,11 @@ pipeline {
         sh 'docker build -t awspythonscanner:v$BUILD_NUMBER -t awspythonscanner:latest .'
       }
     }
+
+    stage('Invoke Deploy') {
+      steps {
+        build job: 'BuildAWSScanner'
+      }
+    }
   }
 }
