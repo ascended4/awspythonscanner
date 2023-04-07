@@ -1,6 +1,8 @@
 pipeline {
   agent any
-  
+  options {
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
+  }
   stages {
     stage('Git Clone') {
       steps {
