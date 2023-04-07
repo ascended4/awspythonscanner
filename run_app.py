@@ -58,4 +58,4 @@ for reservation in response['Reservations']:
 for instance in instances:
     instance_id = instance['InstanceId']
     instance_name = next((tag['Value'] for tag in instance['Tags'] if tag['Key'] == 'Name'), 'Unnamed')
-    print("Instance ID: {}, Instance Name: {}".format(instance_id, instance_name))
+    print(f"Instance ID: {instance_id}, Instance Name: {instance_name}")
