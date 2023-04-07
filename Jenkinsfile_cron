@@ -3,9 +3,6 @@ pipeline {
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
   }
-  triggers {
-    cron '5 * * * *'
-  }
   stages {
     stage('Run built image') {
       steps {
