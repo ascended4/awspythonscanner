@@ -17,7 +17,7 @@ pipeline {
 
     stage('Invoke Deploy') {
       steps {
-        build job: 'CronAWSPythonScanner'
+        build wait: false, job: 'CronAWSPythonScanner'
       }
     }
   }
